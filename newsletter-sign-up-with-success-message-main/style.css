@@ -1,4 +1,4 @@
-:root{
+:root {
     --Tomato: hsl(4, 100%, 67%);
     --Dark-Slate-Grey: hsl(234, 29%, 20%);
     --Charcoal-Grey: hsl(235, 18%, 26%);
@@ -11,46 +11,202 @@
     src: url(assets/fonts/Roboto.ttf);
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     background-color: var(--Off-white);
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    
+    font-family: Roboto;
+    background-color: hsl(235, 18%, 26%);
 }
 
-
-.container{
+.container {
     display: flex;
-    background-color: green;
+    background-color: hsl(0, 0%, 100%);
     max-width: 80%;
     padding: 20px;
+    border-radius: 20px;
     width: 750px;
     min-height: 50vh;
     gap: 2rem;
-    
-    
 }
-.details{
+
+.details {
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 20px;
+    width: 60%;
     line-height: 2.5rem;
 }
 
-.inputs.button{
-    
+ul {
+    /* list-style: none; */
+    list-style-image: url(assets/images/icon-success.svg);
+    padding-left: 20px;
 }
 
-ul{
-    list-style-type: none;
+li {
+    margin-bottom: 10px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.error-message {
+    color: red;
+    display: inline;
+    padding-left: 10px; 
+}
+
+
+.email:invalid {
+    border: 1px solid red;
+}
+
+input {
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid hsl(231, 7%, 60%);
+    font-family: inherit;
+}
+
+button {
+    font-family: inherit;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: white;
+    background-color: hsl(235, 18%, 26%);
+}
+
+.hero {
+    width: 40%;
+}
+
+.hero img {
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+.success {
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    min-height: 35vh;
+    background-color: white;
+    border-radius: 20px;
+    padding: 50px;
+    color: hsl(234, 29%, 20%);
+    font-size: 20px;
+}
+
+.success img {
+    width: 50px;
+}
+
+.success h1 {
+    font-size: 40px;
+}
+
+.btn1 {
+    background-color: hsl(234, 29%, 20%);
+}
+
+/* Media Query for small mobile phones (e.g., iPhone SE) */
+@media (max-width: 375px) {
+    body {
+        font-size: 14px; /* Adjust the font size for small screens */
+    }
+
+    .container {
+        flex-direction: column-reverse;
+        max-width: 95%; /* Make the container slightly narrower */
+        width: 95%; /* Make the container full width on small screens */
+    }
+
+    .details {
+        width: 100%; /* Make details take up the full width */
+    }
+
+    ul {
+        padding-left: 10px; /* Reduce the padding for list items */
+    }
+
+    form {
+        width: 100%; /* Make the form full width */
+    }
+
+    input {
+        width: 100%; /* Make input fields full width */
+    }
+
+    button {
+        width: 100%; /* Make buttons full width */
+    }
+
+    .hero {
+        width: 100%; /* Make the hero section full width */
+    }
+
+    .success {
+        width: 100%; /* Make the success message full width */
+    }
+}
+
+/* Media Query for screens with a width of 768px and below */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* Adjust the font size as needed */
+    }
+
+    .container {
+        flex-direction: column-reverse;
+        max-width: 90%; /* Make the container a bit narrower */
+        width: 90%; /* Make the container full width on small screens */
+    }
+
+    .details {
+        width: 100%; /* Make details take up the full width */
+    }
+
+    ul {
+        padding-left: 10px; /* Reduce the padding for list items */
+    }
+
+    form {
+        width: 100%; /* Make the form full width */
+    }
+
+    input {
+        width: 100%; /* Make input fields full width */
+    }
+
+    button {
+        width: 100%; /* Make buttons full width */
+    }
+
+    .hero {
+        width: 100%; /* Make the hero section full width */
+    }
+
+    .success {
+        width: 100%; /* Make the success message full width */
+    }
+}
