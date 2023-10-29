@@ -1,48 +1,52 @@
-// const myForm = document.querySelector('form') as HTMLFormElement;
-// const container1 = document.querySelector('.container') as HTMLElement;
-// const container2 = document.querySelector('.success') as HTMLElement;
+const EMAIL_REGEX: RegExp = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
-// myForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     container1.classList.add("hide");
-//     container2.classList.remove("hide");
-// });
+const email: HTMLInputElement | null = document.querySelector('#email');
+const form: HTMLFormElement | null = document.querySelector('#form');
+const formFeedback: HTMLParagraphElement | null = document.querySelector('.form__feedback');
+const newsletter: HTMLDivElement | null = document.querySelector('.newsletter');
+const feedback: HTMLDivElement | null = document.querySelector('.feedback');
+const btnFeedback: HTMLButtonElement | null = document.querySelector('#feedback-btn');
 
+if (form && email && formFeedback && newsletter && feedback && btnFeedback) {
+  form.addEventListener('submit', (event: Event) => {
+    event.preventDefault();
 
-
-
-
-
-
-const form = document.querySelector('form') as HTMLFormElement;
-const container1 = document.querySelector('.container') as HTMLElement;
-const container2 = document.querySelector('.success') as HTMLElement;
-const emailInput = document.getElementById('email') as HTMLInputElement; // Get the email input element
-
-const displayErrorMessage = (message: string) => {
-    const errorMessage = document.querySelector('.error-message') as HTMLElement;
-    errorMessage.textContent = message;
-    errorMessage.classList.remove('hide');
-};
-
-const validateEmail = (email: string): boolean => {
-    
-    const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
-    return emailFormat.test(email);
-};
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const emailValue = emailInput.value.trim();
-
-    if (emailValue === '' || !validateEmail(emailValue)) {
-        displayErrorMessage('Valid email address is required');
-    } else {
-        container1.classList.add('hide');
-        container2.classList.remove('hide');
-
-        const errorMessage = document.querySelector('.error-message') as HTMLElement;
-        errorMessage.classList.add('hide');
+    if (!email.value) {
+      if (formFeedback) {
+        formFeedback.textContent = 'Email is required';
+      }
+      if (email) {
+        email.classList.add('form__input--invalid');
+      }
+      return;
     }
-});
+
+    if (email && !EMAIL_REGEX.test(email.value)) {
+      if (formFeedback) {
+        formFeedback.textContent = 'Valid email required';
+      }
+      if (email) {
+        email.classList.add('form__input--invalid');
+      }
+      return;
+    }
+
+    if (newsletter) {
+      newsletter.classList.add('is-hide');
+    }
+    if (feedback) {
+      feedback.classList.remove('is-hide');
+    }
+  });
+
+  if (btnFeedback) {
+    btnFeedback.addEventListener('click', () => {
+      if (feedback) {
+        feedback.classList.add('is-hide');
+      }
+      if (newsletter) {
+        newsletter.classList.remove('is-hide');
+      }
+    });
+  }
+}
